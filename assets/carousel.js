@@ -40,6 +40,55 @@ const initCarouselButtons = () => {
   });
 };
 
+// étape deux, on implémente maintenant la fonction qui crée
+// dynamiquement les images.
+const createImages = () => {
+  console.log("Création des images...");
+  //Tant que l'index est infèrieur à la longueur du tableau slides, on
+  // itère sur le tableau pour créer les images.
+  for (let index = 0; index < slides.length; index++) {
+    // 1. Obtenir la valeur de l'élément de la diapositive actuelle (0, 1,
+    // 2, 3...)
+    const slide = slides[index];
+    // console.log(slide);
+
+    // 2. Créer les balises nécessaires
+    const image = document.createElement("img");
+    const tagline = document.createElement("p");
+
+    // 3. Configurer les attributs des balises img et p
+    // on peut aussi le faire avec setAttribute, cela
+    // fonctionne trés bien avec la propriété (méthode plus rapide)
+    image.src = `./assets/images/slideshow/${slide.image}`;
+    image.alt = `Banner Print-it ${index + 1}`;
+    image.classList.add("banner-img");
+    //Cette méthode enlève toute balise malveillante ou code qui pourrait être injecté dans la chaîne
+    tagline.innerHTML = DOMPurify.sanitize(slide.tagLine);
+
+    // 4. Ajouter les éléments créés dans le DOM
+    banner.appendChild(image);
+    banner.appendChild(tagline);
+
+    console.log("Image ajoutée : ", image);
+
+    // 5. Appliquer la logique pour masquer les images/taglines sauf la première
+    // si l'index n'est pas égal à 0, alors ce bloc s'applique à toutes
+    // les images et légendes sauf celles correspondant à la première
+    // slide, celle avec un index de 0. Seule la première image et sa
+    // legende seront visibles.
+    if (index !== 0) {
+      image.classList.add("hidden");
+      tagline.classList.add("hidden");
+    } else {
+      image.classList.remove("hidden");
+      tagline.classList.remove("hidden");
+    }
+
+    // Vérification avec console.log pour voir l'état après l'application de la logique
+    // console.log(`Index ${index} - Image classList :`, image.classList);
+    // console.log(`Index ${index} - Tagline classList :`, tagline.classList);
+  }
+};
 const createDots = () => {
   if (dotsContainer.children.length === 0) {
     slides.forEach((_, index) => {
