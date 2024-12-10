@@ -11,6 +11,8 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@400;900&display=swap"
 		rel="stylesheet">
+	<!-- Importation de DOMPurify via CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
 </head>
 
 <body>
@@ -22,6 +24,7 @@
 	</header>
 	<main>
 		<div id="banner">
+			<div id="content-slides"></div>
 			<img class="banner-img" src="./assets/images/slideshow/slide1.jpg" alt="Banner Print-it">
 			<p>Impressions tous formats <span>en boutique et en ligne</span></p>
 			<button class="arrow arrow_left" id="prev" aria-label="Slide précédente">
