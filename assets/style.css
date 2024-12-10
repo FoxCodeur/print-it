@@ -121,6 +121,9 @@ header {
 	object-fit: cover;
 	object-position: center;
 }
+.hidden {
+	display: none;
+  }
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
 #banner .arrow {
@@ -140,6 +143,7 @@ header {
 	bottom: 40px;
 	display: flex;
 }
+/* classe pour chacune des li */
 .dot {
 	margin-inline: 5px;
 	width: 13px;

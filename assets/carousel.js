@@ -14,13 +14,6 @@ const dotsContainer = document.querySelector(".dots"); // Sélectionner directem
 let currentIndex = 0;
 // --------------------------------------------------------------------
 
-// Les fonctions
-// prevButton.addEventListener("click", () => {
-//   console.log("prev");
-// });
-// nextButton.addEventListener("click", () => {
-//   console.log("next");
-// });
 // Écouteurs d'événements pour les boutons
 // Ajouter un gestionnaire d'événement pour chaque bouton
 const initCarouselButtons = () => {
@@ -89,6 +82,7 @@ const createImages = () => {
     // console.log(`Index ${index} - Tagline classList :`, tagline.classList);
   }
 };
+
 // étape un, on implémente la fonction qui gère les dots.
 const createDots = () => {
   // 1. si l'ul avec la classe .dots n'a pas encore de dots
@@ -116,6 +110,31 @@ const createDots = () => {
     });
   }
 };
+
+//createImages et createDots sont des fonctions qui créent et
+// structurent le DOM au départ.
+//updateCarousel agit après que le DOM ait été généré par ces fonctions.
+// 4. Mise à jour du carousel
+const updateCarousel = () => {
+  // Met à jour les images et les taglines
+  const images = document.querySelectorAll(".banner-img");
+  const taglines = document.querySelectorAll("p");
+  images.forEach((image, index) => {
+    if (index === currentIndex) {
+      image.classList.remove("hidden");
+    } else {
+      image.classList.add("hidden");
+    }
+  });
+  taglines.forEach((tagline, index) => {
+    if (index === currentIndex) {
+      tagline.classList.remove("hidden");
+    } else {
+      tagline.classList.add("hidden");
+    }
+  });
+};
+
 // Appel de la fonction pour créer les dots
 createDots();
 // Appel de la fonction pour créer les images
