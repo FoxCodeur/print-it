@@ -1,14 +1,17 @@
 // Sélection des éléments HTML
 import { slides } from "../assets/script.js";
+
 // Les variables
-const prevButton = document.getElementById("prev");
-const nextButton = document.getElementById("next");
+// const prevButton = document.getElementById("prev");
+// const nextButton = document.getElementById("next");
+const banner = document.getElementById("banner");
+
+// boutons next et prev
+const buttons = document.querySelectorAll(".arrow");
 const dotsContainer = document.querySelector(".dots"); // Sélectionner directement <ul> pour ajouter les dots
 
-const slideContainer = document.getElementById("content-slides");
-console.log(slideContainer);
-const ul = document.createElement("ul");
-
+// Variable pour suivre l'index courant
+let currentIndex = 0;
 // --------------------------------------------------------------------
 
 // Les fonctions
