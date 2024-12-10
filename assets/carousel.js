@@ -89,19 +89,28 @@ const createImages = () => {
     // console.log(`Index ${index} - Tagline classList :`, tagline.classList);
   }
 };
+// étape un, on implémente la fonction qui gère les dots.
 const createDots = () => {
+  // 1. si l'ul avec la classe .dots n'a pas encore de dots
   if (dotsContainer.children.length === 0) {
+    //Le premier argument _ correspond à l'élément actuel du tableau slides dans l'itération (souvent appelé slide).
+    //Le second argument index est la position de l'élément dans le tableau.
     slides.forEach((_, index) => {
-      const dot = document.createElement("li"); // Créer un nouvel élément <li>
-      dot.classList.add("dot"); // Ajouter la classe "dot"
-      dotsContainer.appendChild(dot); // Ajouter le dot au conteneur
-      //--------------------------------------------------------------
+      // 1. on crée le nombre de li nécessaire
+      const dot = document.createElement("li");
+      dot.classList.add("dot");
+      dotsContainer.appendChild(dot);
+      // 2. maintenant, les li qui ont la classe .dot sont crées dans le dom.
+      // 3. au click on ajoute la classe .dot_selected sur le dot cliqué
       dot.addEventListener("click", () => {
-        // console.log(`Dot cliqué : ${index}`); // Affiche l'index du dot cliqué dans la console
-        // Retirer "dot_selected" de tous les dots
-        const allDots = dotsContainer.querySelectorAll(".dot"); // Sélectionner tous les dots
-        allDots.forEach((d) => d.classList.remove("dot_selected")); // Supprimer la classe
-        // Ajouter la classe "dot_selected" uniquement au dot cliqué
+        console.log(`Dot cliqué : ${index}`);
+        //Dernière étape, on met à jour l'index actuel.
+        // Mettre à jour l'index courant avec la valeur index du dot
+        currentIndex = index;
+        // Mettre à jour l'interface utilisateur
+        updateCarousel();
+        const allDots = dotsContainer.querySelectorAll(".dot");
+        allDots.forEach((d) => d.classList.remove("dot_selected"));
         dot.classList.add("dot_selected");
       });
     });
