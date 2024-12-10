@@ -15,13 +15,30 @@ let currentIndex = 0;
 // --------------------------------------------------------------------
 
 // Les fonctions
-prevButton.addEventListener("click", () => {
-  console.log("prev");
-});
-nextButton.addEventListener("click", () => {
-  console.log("next");
-});
-const createImages = () => {};
+// prevButton.addEventListener("click", () => {
+//   console.log("prev");
+// });
+// nextButton.addEventListener("click", () => {
+//   console.log("next");
+// });
+// Écouteurs d'événements pour les boutons
+// Ajouter un gestionnaire d'événement pour chaque bouton
+const initCarouselButtons = () => {
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.id === "prev") {
+        console.log("Précédent cliqué");
+        //pour éviter l'index négatif on ajoute slides.length,
+        //cela rend le résultat positif ou nul.
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      } else if (button.id === "next") {
+        console.log("Suivant cliqué");
+        currentIndex = (currentIndex + 1) % slides.length; // Passage au slide suivant
+      }
+      updateCarousel();
+    });
+  });
+};
 
 const createDots = () => {
   if (dotsContainer.children.length === 0) {
@@ -43,3 +60,7 @@ const createDots = () => {
 };
 // Appel de la fonction pour créer les dots
 createDots();
+// Appel de la fonction pour créer les images
+createImages();
+// Initialisation des gestionnaires d'événements après que le DOM est prêt
+initCarouselButtons();
