@@ -26,3 +26,4 @@ Ajoute les flèches directement dans la structure HTML pour permettre la navigat
     </button>
   </div>
 </div>
+------------------------------------------------------------------------
